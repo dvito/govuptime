@@ -25,31 +25,3 @@ function chart_this(){
     });
   });
 }
-
-
-// requires chart.js
-// var bar_chart;
-// function chart_this(){
-//   var ctx = document.getElementById("employees_chart").getContext("2d");
-//   var bar_labels = []
-//   var total_employees = []
-//   var furloughed_employees = []
-//   sorted_for_total = _.sortBy(employee_data, function(item){ return item.furloughed});
-//   $.each(sorted_for_total, function(i, item) {
-//     bar_labels.push(item.short_name);
-//     total_employees.push(item.employees);
-//     furloughed_employees.push(item.furloughed);
-//   });
-//   var bar_data = {
-//     labels : bar_labels,
-//     datasets : [
-//       {
-//         fillColor : "rgba(151,187,205,0.5)",
-//         strokeColor : "rgba(151,187,205,1)",
-//         data : furloughed_employees
-//       }
-//     ]
-//   }
-//   console.log(bar_data);
-//   bar_chart = new Chart(ctx).Bar(bar_data);
-// }
