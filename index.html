@@ -15,7 +15,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="brand" href="#">GovUpTime.com</a>
+        <a class="brand" href="#">GovUptime.com</a>
       </div>
     </div>
   </div>
@@ -24,7 +24,9 @@
       <h1>Is the Federal Government Operational?</h1>
       <p class="lead text-error">No.</p>
       <p class="lead">Time since federal government was last operating:</p>
-      <p id="time" class="lead">
+      <p id="time" class="lead">&nbsp;</p>
+      <p class="lead">Service level for last year:</p>
+      <p id="service_level" class="lead">&nbsp;</p>
       <div id="share_this">
         <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://govuptime.com" data-text="Government Uptime Calculation" data-via="govuptime" data-size="large" data-related="govuptime" data-hashtags="govuptime">Tweet</a>
         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
@@ -41,15 +43,21 @@
   <script>
     $(function(){
       var calc_year = setInterval(function(){
-          date_past = new Date("October 01, 2013 00:00:00");
-          date_now = new Date();
+          var date_past = new Date("October 01, 2013 00:00:00");
+          var date_now = new Date();
+          var date_last_year = new Date();
+          var date_offset = (24*60*60*1000) * 365;
+          date_last_year.setTime(date_last_year.getTime() - date_offset)
 
+          var time_total = (date_now - date_last_year) / 1000;
           var time_passed = (date_now - date_past) /1000;
           var days = Math.floor(time_passed / 86400);
           var hours = Math.floor(time_passed / 3600) % 24;
           var minutes = Math.floor(time_passed / 60) % 60;
           var seconds = time_passed % 60;
 
+          var service_level = (time_total - time_passed) / time_total;
+          $("#service_level").text(""+(service_level * 100) + "%");
           $("#time").text(days+" Days, " + hours + " Hours, " + minutes + " Minutes, " +Math.round(seconds) + " Seconds.");
       },1000);
     });
