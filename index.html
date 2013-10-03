@@ -50,8 +50,11 @@
         <p class="lead text-error">No.</p>
         <p class="lead" style="padding-top:10px;">Time since federal government last operated:</p>
         <p id="time" class="lead">&nbsp;</p>
+				<p class="lead">Hours lost since federal government shutdown (assuming 800,000 employees):</p>
+        <p id="hours_lost" class="lead">&nbsp;</p>
         <p class="lead">Service level for last year:</p>
         <p id="service_level" class="lead">&nbsp;</p>
+				
         <p style="padding-top:20px;"><i>A SysAdmin would be pissed.</i></p>
         <div id="share_this">
           <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://govuptime.com" data-text="Government Uptime Calculation" data-via="govuptime" data-size="large" data-related="govuptime" data-hashtags="govuptime">Tweet</a>
@@ -91,11 +94,15 @@
           var seconds = time_passed % 60;
 
           var service_level = (time_total - time_passed) / time_total;
+
+					var hours_lost = Math.floor((time_passed * 800000) / 3600);
           $("#service_level").text(""+(service_level * 100) + "%");
           $("#time").text(days+" Days, " + hours + " Hours, " + minutes + " Minutes, " +Math.round(seconds) + " Seconds.");
+					$("#hours_lost").text("" + hours_lost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " Hours");
       },1000);
     });
   </script>
+	<script></script>
   <script src="js/underscore.js"></script>
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
   <script src="js/main.min.js"></script>
