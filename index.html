@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>GovUpTime</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/css/bootstrap-responsive.min.css" media="all" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+      <div class="container">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="brand" href="#">GovUpTime.com</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+      <h1>Is the Federal Government Operational?</h1>
+      <p class="lead text-error">No.</p>
+      <p class="lead">Time since federal government was last operating:</p>
+      <p id="time" class="lead">
+      <div id="share_this">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://govuptime.com" data-text="Government Uptime Calculation" data-via="govuptime" data-size="large" data-related="govuptime" data-hashtags="govuptime">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      </div>
+  </div>
+
+  <div id="footer">
+      <div class="container">
+        <p class="muted credit">Brought to you by: <a href="https://twitter.com/GSMcNamara">G.S. McNamara</a> and <a href="https://twitter.com/JustinRaine5">Justin Raines</a>.</p>
+      </div>
+    </div>
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script>
+    $(function(){
+      var calc_year = setInterval(function(){
+          date_past = new Date("October 01, 2013 00:00:00");
+          date_now = new Date();
+
+          var time_passed = (date_now - date_past) /1000;
+          var days = Math.floor(time_passed / 86400);
+          var hours = Math.floor(time_passed / 3600) % 24;
+          var minutes = Math.floor(time_passed / 60) % 60;
+          var seconds = time_passed % 60;
+
+          $("#time").text(days+" Days, " + hours + " Hours, " + minutes + " Minutes, " +Math.round(seconds) + " Seconds.");
+      },1000);
+    });
+  </script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-7635850-20', 'govuptime.com');
+    ga('send', 'pageview');
+
+  </script>
+</body>
+</html>
