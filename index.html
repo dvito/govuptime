@@ -96,7 +96,7 @@
 
           var service_level = (time_total - time_passed) / time_total;
 
-					var hours_lost = Math.floor((time_passed * 800000) / 3600);
+	  var hours_lost = Math.floor((time_passed * 800000) / 10800);
           $("#service_level").text(""+(service_level * 100) + "%");
           $("#time").text(days+" Days, " + hours + " Hours, " + minutes + " Minutes, " +Math.round(seconds) + " Seconds.");
 					$("#hours_lost").text("" + hours_lost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " Hours");
