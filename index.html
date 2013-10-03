@@ -7,6 +7,14 @@
   <link href="/css/bootstrap-responsive.min.css" media="all" rel="stylesheet" type="text/css" />
 </head>
 <body>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=120110554729003";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
   <div class="navbar navbar-inverse">
     <div class="navbar-inner">
       <div class="container">
@@ -23,14 +31,16 @@
   <div class="container">
       <h1>Is the Federal Government Operational?</h1>
       <p class="lead text-error">No.</p>
-      <p class="lead">Time since federal government was last operating:</p>
+      <p class="lead">Time since federal government last operated:</p>
       <p id="time" class="lead">&nbsp;</p>
       <p class="lead">Service level for last year:</p>
       <p id="service_level" class="lead">&nbsp;</p>
+      <p>A SysAdmin would be pissed.</p>
       <div id="share_this">
         <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://govuptime.com" data-text="Government Uptime Calculation" data-via="govuptime" data-size="large" data-related="govuptime" data-hashtags="govuptime">Tweet</a>
         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
       </div>
+      <div class="fb-like" data-href="http://facebook.com/govuptime" data-width="The pixel width of the plugin" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="standard" data-action="like" data-show-faces="true" data-send="false"></div>
   </div>
 
   <div id="footer">
