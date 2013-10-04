@@ -47,3 +47,11 @@ code {
 .x.axis path {
   display: none;
 }
+
+#service_level {
+  font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+  width: 14.75rem;
+  overflow: hidden;
+  margin: 0 auto 1.25rem;
+  text-align: left;
+}
