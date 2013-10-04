@@ -3,4 +3,13 @@ govuptime
 
 Is the government up?
 
-Provides just a service level for the last year. Will require updating if the government comes back.
+How long has it been done?
+
+Whats the service level?
+
+How many employees are affected?
+
+Will require updating if the government comes back.
+
+
+TODO: Find better data. Alter how we are looking at the data to be as clear as possible / offer alternative views.
