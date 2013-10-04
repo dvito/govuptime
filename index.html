@@ -98,8 +98,12 @@
           var seconds = time_passed % 60;
 
           var service_level = (time_total - time_passed) / time_total;
-					var hours_lost = (workingDaysBetweenDates(date_past,date_yesterday)-days)*6400000 + Math.floor((time_passed * 800000) / 10800);
-          $("#service_level").text(""+(service_level * 100) + "%");
+					var hours_lost = 0;
+					if ((date_now.getDate() + 1) % 7 < 2) //Weekend
+						hours_lost = (workingDaysBetweenDates(date_past,date_yesterday)-days)*6400000;
+					else //Weekday
+						hours_lost = (workingDaysBetweenDates(date_past,date_yesterday)-days)*6400000 + Math.floor((time_passed * 800000) / 10800);
+					$("#service_level").text(""+(service_level * 100) + "%");
           $("#time").text(days+" Days, " + hours + " Hours, " + minutes + " Minutes, " +Math.round(seconds) + " Seconds.");
 					$("#hours_lost").text("" + hours_lost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " Hours");
       },1000);
