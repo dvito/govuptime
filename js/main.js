@@ -12,7 +12,7 @@ function chart_this(){
     var data = google.visualization.arrayToDataTable(array_data);
 
     var options = {
-      title: 'Furloughed Employees',
+      title: 'Furloughed Employees (Logarithmic Scale)',
       vAxis: {title: 'Department',  titleTextStyle: {color: 'red'}},
       height: 800,
       hAxis: { logScale: true }
