@@ -3,7 +3,7 @@ govuptime
 
 Is the government up?
 
-How long has it been done?
+How long has it been down?
 
 Whats the service level?
 
