@@ -103,7 +103,7 @@
 
           var service_level = (time_total - time_passed) / time_total;
 					var hours_lost = 0;
-					if ((date_now.getDate() + 1) % 7 < 2) //Weekend
+					if ((date_now.getDay() + 1) % 7 < 2) //Weekend
 						hours_lost = (workingDaysBetweenDates(date_past,date_yesterday))*6400000;
 					else //Weekday
 						hours_lost = (workingDaysBetweenDates(date_past,date_yesterday)-days)*6400000 + Math.floor((time_passed * 800000) / 10800);
