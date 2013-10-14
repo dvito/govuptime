@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>GovUptime</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,15 +13,18 @@
   <meta property="og:site_name" content="Government Uptime Calculation #govuptime" />
   <meta property="og:description" content="A realtime calculation of the Federal Government's service level." />
 </head>
+
 <body data-spy="scroll" data-target=".navbar">
   <div id="fb-root"></div>
+
   <script>(function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
     js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=120110554729003";
     fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
+  }(document, 'script', 'facebook-jssdk'));
+  </script>
 
   <div id="wrap">
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -46,6 +50,7 @@
     </div>
 
     <div class="container" style="text-align:center;">
+
       <div id="downtime" class="section" style="padding-top:40px">
         <h1>Is the federal government operational?</h1>
         <p class="lead text-error">No.</p>
@@ -57,23 +62,29 @@
         <p id="service_level" class="lead">&nbsp;</p>
 
         <p style="padding-top:20px;"><i>A SysAdmin would be <strike>pissed</strike> fired.</i></p>
+
         <div id="share_this">
           <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://govuptime.com" data-text="Government Uptime Calculation" data-via="govuptime" data-size="large" data-related="govuptime" data-hashtags="govuptime">Tweet</a>
           <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
         </div>
+
         <div style="width: 190px;margin:0 auto;display:block;">
         <div class="fb-like" data-href="http://facebook.com/govuptime" data-width="The pixel width of the plugin" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="standard" data-action="like" data-show-faces="true" data-send="false"></div></div>
       </div>
+
 			<div id="furloughed_employees" class="section" style="padding-top:40px"  >
 				<h2 class="document-description">Effect on different departments</h2>
 				<iframe sandbox="allow-same-origin allow-scripts" src="http://vida.io/embed/WgBMc4zDWF7YpqXGR" style="border: 0; width:800; height:600;" width="800" height="600"></iframe>
 			</div>
+
       <div id="department_sizes" class="section" style="padding-top:40px">
         <h2>Department sizes</h2>
         <div id="employees_chart"></div>
       </div>
+
     </div>
   </div>
+
   <div id="footer" style="text-align: center; margin-top: 10px">
     <div class="container">
       <table align="center" style="margin-top:10px;">
@@ -106,6 +117,7 @@
   <script>
     $(function(){
       var date_past = new Date("October 01, 2013 00:00:00 EDT");
+
       setInterval(function(){
           var date_now = new Date();
           var utc = date_now.getTime() + (date_now.getTimezoneOffset() * 60000);
@@ -130,10 +142,11 @@
       },1000);
     });
   </script>
-	<script></script>
+
   <script src="js/underscore.js"></script>
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
   <script src="js/main.js"></script>
+
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -142,7 +155,7 @@
 
     ga('create', 'UA-7635850-20', 'govuptime.com');
     ga('send', 'pageview');
-
   </script>
+
 </body>
 </html>
