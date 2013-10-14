@@ -66,3 +66,15 @@ function workingDaysBetweenDates(startDate, endDate) {
 
     return days;
 }
+
+function getHoursLost() {
+  var date_past = new Date("October 01, 2013 00:00:00");
+  var date_now = new Date();
+  var date_yesterday = new Date();
+	date_yesterday.setDate(date_yesterday.getDate() - 1);
+  if ((date_now.getDay() + 1) % 7 < 2) //Weekend
+		hours_lost = (workingDaysBetweenDates(date_past,date_yesterday))*6400000;
+	else //Weekday
+		hours_lost = (workingDaysBetweenDates(date_past,date_yesterday)-days)*6400000 + Math.floor((time_passed * 800000) / 10800);
+  return hours_lost;
+}
