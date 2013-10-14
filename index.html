@@ -116,30 +116,37 @@
   <script src="js/bootstrap.min.js"></script>
   <script>
     $(function(){
-      var date_past = new Date("October 01, 2013 00:00:00 EDT");
+      //the following date, as well as calculations, will be done in UTC.
+      var shutdown_start = new Date(2013, 9, 1, 4, 0, 0, 0);
 
       setInterval(function(){
-          var date_now = new Date();
-          var utc = date_now.getTime() + (date_now.getTimezoneOffset() * 60000);
-          var date_now = new Date(utc + (3600000*-4));
-          var date_last_year = new Date();
-          var utc = date_last_year.getTime() + (date_last_year.getTimezoneOffset() * 60000);
-          var date_last_year = new Date(utc + (3600000*-4));
-          var date_offset = (24*60*60*1000) * 365;
-          date_last_year.setTime(date_last_year.getTime() - date_offset)
+          var today = new Date();
+          var today_as_UTC = today.getTime() + (today.getTimezoneOffset() * 60000); //in UTC
+          today = new Date(today_as_UTC);
+          
+          var a_year_ago_today = new Date();
+          var a_year_ago_today_as_UTC = a_year_ago_today.getTime() + (a_year_ago_today.getTimezoneOffset() * 60000); //in UTC
+          a_year_ago_today = new Date(a_year_ago_today_as_UTC);
 
-          var time_total = (date_now - date_last_year) / 1000;
-          var time_passed = (date_now - date_past) /1000;
-          var days = Math.floor(time_passed / 86400);
-          var hours = Math.floor(time_passed / 3600) % 24;
-          var minutes = Math.floor(time_passed / 60) % 60;
-          var seconds = time_passed % 60;
+          var a_year_in_milliseconds = (24*60*60*1000) * 365;
 
-          var service_level = (time_total - time_passed) / time_total;
-					$("#service_level").text(""+(service_level * 100) + "%");
-          $("#time").text(days+" Days, " + hours + " Hours, " + minutes + " Minutes, " +Math.round(seconds) + " Seconds");
+          a_year_ago_today.setTime(a_year_ago_today.getTime() - a_year_in_milliseconds)
+
+          var a_year_in_seconds = (today - a_year_ago_today) / 1000;
+          var shutdown_length_in_seconds = (today - shutdown_start) / 1000;
+
+          var days = Math.floor(shutdown_length_in_seconds / 86400);
+          var hours = Math.floor(shutdown_length_in_seconds / 3600) % 24;
+          var minutes = Math.floor(shutdown_length_in_seconds / 60) % 60;
+          var seconds = shutdown_length_in_seconds % 60;
+
+          var service_level = (a_year_in_seconds - shutdown_length_in_seconds) / a_year_in_seconds;
+					
+          $("#service_level").text(""+(service_level * 100) + "%");
+          $("#time").text(days + " Days, " + hours + " Hours, " + minutes + " Minutes, " + Math.round(seconds) + " Seconds");
 					$("#hours_lost").text("" + getHoursLost().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " Hours");
       },1000);
+
     });
   </script>
 
@@ -156,6 +163,6 @@
     ga('create', 'UA-7635850-20', 'govuptime.com');
     ga('send', 'pageview');
   </script>
-  
+
 </body>
 </html>
