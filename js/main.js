@@ -41,7 +41,6 @@ function workingDaysBetweenDates(startDate, endDate) {
 
     // Calculate days between dates
     var millisecondsPerDay = 86400 * 1000; // Day in milliseconds
-    startDate.setHours(0,0,0,1);  // Start just after midnight
     endDate.setHours(23,59,59,999);  // End just before midnight
     var diff = endDate - startDate;  // Milliseconds between datetime objects
     var days = Math.ceil(diff / millisecondsPerDay);
@@ -67,19 +66,29 @@ function workingDaysBetweenDates(startDate, endDate) {
         days = days - 1
         
     // Remove holidays from working days
-    if ((startDate < new Date("October 14, 2013 00:00:00")) && (endDate > new Date("October 14, 2013 00:00:00")))
+    if ((startDate < new Date("October 14, 2013 00:00:00 EDT")) && (endDate > new Date("October 14, 2013 00:00:00 EDT")))
       days = days - 1
 
     return days;
 }
 
 function getHoursLost() {
-  var date_of_shutdown = new Date("October 01, 2013 00:00:00");
+  var date_of_shutdown = new Date("October 01, 2013 00:00:00 EDT");
+
   var date_today = new Date();
+  //disregard visitor's timezone and force EDT:
+  var date_today_as_utc = date_today.getTime() + (date_today.getTimezoneOffset() * 60000);
+  var date_today = new Date(date_today_as_utc + (3600000*-4));
+
   var date_yest = new Date();
-  var time_since_shutdown = (date_today - date_of_shutdown) /1000;
+  //disregard visitor's timezone and force EDT:
+  var date_yest_as_utc = date_yest.getTime() + (date_yest.getTimezoneOffset() * 60000);
+  var date_yest = new Date(date_yest_as_utc + (3600000*-4));
+  date_yest.setDate(date_yest.getDate() - 1);
+
+  var time_since_shutdown = (date_today - date_of_shutdown) / 1000;
   var days_since_shutdown = Math.floor(time_since_shutdown / 86400);
-	date_yest.setDate(date_yest.getDate() - 1);
+
   if (((date_today.getDay() + 1) % 7 < 2) || (date_today.getDate() == 14 && date_today.getMonth() == 9))//Weekend or Columbus Day
      return (workingDaysBetweenDates(date_of_shutdown,date_yest))*6400000;
    else //Weekday
