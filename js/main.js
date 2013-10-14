@@ -1,5 +1,6 @@
 google.load("visualization", "1", {packages:["corechart"], 'language': 'ja'});
 google.setOnLoadCallback(chart_this);
+
 function chart_this(){
   $.getJSON("js/employees.json",function(data){
     employee_data = data;
@@ -9,9 +10,10 @@ function chart_this(){
       console.log(item);
       array_data.push([item.short_name,item.employees,""+item.name+" employees: "+item.employees.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")]);
     });
+
     var data = new google.visualization.DataTable();
     data.addColumn('string', 'Department');
-    data.addColumn('number', 'Employees')
+    data.addColumn('number', 'Employees');
     data.addColumn({type: 'string', role: 'tooltip'});
     data.addRows(array_data);
 
@@ -26,7 +28,7 @@ function chart_this(){
     var chart = new google.visualization.BarChart(document.getElementById('employees_chart'));
     chart.draw(data, options);
     $('[data-spy="scroll"]').each(function () {
-      var $spy = $(this).scrollspy('refresh')
+      var $spy = $(this).scrollspy('refresh');
     });
   });
 }
