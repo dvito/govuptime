@@ -106,7 +106,7 @@
   <script>
     $(function(){
       var date_past = new Date("October 01, 2013 00:00:00 EDT");
-      var calc_year = setInterval(function(){
+      setInterval(function(){
           var date_now = new Date();
           var utc = date_now.getTime() + (date_now.getTimezoneOffset() * 60000);
           var date_now = new Date(utc + (3600000*-4));
