@@ -63,6 +63,10 @@ function workingDaysBetweenDates(startDate, endDate) {
     // Remove end day if span ends on Saturday but starts after Sunday
     if (endDay == 6 && startDay != 0)
         days = days - 1
+        
+    // Remove holidays from working days
+    if ((startDate < new Date("October 14, 2013 00:00:00")) && (endDate > new Date("October 14, 2013 00:00:00")))
+      days = days - 1
 
     return days;
 }
@@ -74,7 +78,7 @@ function getHoursLost() {
   var time_since_shutdown = (date_today - date_of_shutdown) /1000;
   var days_since_shutdown = Math.floor(time_since_shutdown / 86400);
 	date_yest.setDate(date_yest.getDate() - 1);
-  if ((date_today.getDay() + 1) % 7 < 2) //Weekend
+  if (((date_today.getDay() + 1) % 7 < 2) || (date_today.getDate() == 14 && date_today.getMonth() == 9))//Weekend or Columbus Day
      return (workingDaysBetweenDates(date_of_shutdown,date_yest))*6400000;
    else //Weekday
 		return (workingDaysBetweenDates(date_of_shutdown,date_yest)-days_since_shutdown)*6400000 + Math.floor((time_since_shutdown * 800000) / 10800);
