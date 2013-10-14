@@ -68,13 +68,14 @@ function workingDaysBetweenDates(startDate, endDate) {
 }
 
 function getHoursLost() {
-  var date_past = new Date("October 01, 2013 00:00:00");
-  var date_now = new Date();
-  var date_yesterday = new Date();
-	date_yesterday.setDate(date_yesterday.getDate() - 1);
-  if ((date_now.getDay() + 1) % 7 < 2) //Weekend
-		hours_lost = (workingDaysBetweenDates(date_past,date_yesterday))*6400000;
-	else //Weekday
-		hours_lost = (workingDaysBetweenDates(date_past,date_yesterday)-days)*6400000 + Math.floor((time_passed * 800000) / 10800);
-  return hours_lost;
+  var date_of_shutdown = new Date("October 01, 2013 00:00:00");
+  var date_today = new Date();
+  var date_yest = new Date();
+  var time_since_shutdown = (date_today - date_of_shutdown) /1000;
+  var days_since_shutdown = Math.floor(time_since_shutdown / 86400);
+	date_yest.setDate(date_yest.getDate() - 1);
+  if ((date_today.getDay() + 1) % 7 < 2) //Weekend
+     return (workingDaysBetweenDates(date_of_shutdown,date_yest))*6400000;
+   else //Weekday
+		return (workingDaysBetweenDates(date_of_shutdown,date_yest)-days_since_shutdown)*6400000 + Math.floor((time_since_shutdown * 800000) / 10800);
 }
