@@ -110,10 +110,6 @@
           var date_now = new Date();
           var utc = date_now.getTime() + (date_now.getTimezoneOffset() * 60000);
           var date_now = new Date(utc + (3600000*-4));
-					var date_yesterday = new Date();
-          var utc = date_yesterday.getTime() + (date_yesterday.getTimezoneOffset() * 60000);
-          var date_yesterday = new Date(utc + (3600000*-4));
-					date_yesterday.setDate(date_yesterday.getDate() - 1);
           var date_last_year = new Date();
           var utc = date_last_year.getTime() + (date_last_year.getTimezoneOffset() * 60000);
           var date_last_year = new Date(utc + (3600000*-4));
@@ -128,11 +124,7 @@
           var seconds = time_passed % 60;
 
           var service_level = (time_total - time_passed) / time_total;
-					var hours_lost = 0;
-					if ((date_now.getDay() + 1) % 7 < 2) //Weekend
-						hours_lost = (workingDaysBetweenDates(date_past,date_yesterday))*6400000;
-					else //Weekday
-						hours_lost = (workingDaysBetweenDates(date_past,date_yesterday)-days)*6400000 + Math.floor((time_passed * 800000) / 10800);
+					var hours_lost = getHoursLost(date_past);
 					$("#service_level").text(""+(service_level * 100) + "%");
           $("#time").text(days+" Days, " + hours + " Hours, " + minutes + " Minutes, " +Math.round(seconds) + " Seconds");
 					$("#hours_lost").text("" + hours_lost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " Hours");
