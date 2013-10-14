@@ -64,7 +64,7 @@
         <div style="width: 190px;margin:0 auto;display:block;">
         <div class="fb-like" data-href="http://facebook.com/govuptime" data-width="The pixel width of the plugin" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="standard" data-action="like" data-show-faces="true" data-send="false"></div></div>
       </div>
-			<div id="furloughed_employees" class="section" style="padding-top:40px">
+			<div id="furloughed_employees" class="section" style="padding-top:40px"  >
 				<h2 class="document-description">Effect on different departments</h2>
 				<iframe sandbox="allow-same-origin allow-scripts" src="http://vida.io/embed/WgBMc4zDWF7YpqXGR" style="border: 0; width:800; height:600;" width="800" height="600"></iframe>
 			</div>
@@ -108,9 +108,11 @@
       var date_past = new Date("October 01, 2013 00:00:00 EDT");
       var calc_year = setInterval(function(){
           var date_now = new Date();
-					// var date_yesterday = new Date();
-					// date_yesterday.setDate(date_yesterday.getDate() - 1);	         
-					var date_last_year = new Date();
+          var utc = date_now.getTime() + (date_now.getTimezoneOffset() * 60000);
+          var date_now = new Date(utc + (3600000*-4));
+          var date_last_year = new Date();
+          var utc = date_last_year.getTime() + (date_last_year.getTimezoneOffset() * 60000);
+          var date_last_year = new Date(utc + (3600000*-4));
           var date_offset = (24*60*60*1000) * 365;
           date_last_year.setTime(date_last_year.getTime() - date_offset)
 
@@ -123,10 +125,6 @@
 
           var service_level = (time_total - time_passed) / time_total;
 					var hours_lost = getHoursLost(date_past);
-					// if ((date_now.getDay() + 1) % 7 < 2) //Weekend
-					// 	hours_lost = (workingDaysBetweenDates(date_past,date_yesterday))*6400000;
-					// else //Weekday
-					// 	hours_lost = (workingDaysBetweenDates(date_past,date_yesterday)-days)*6400000 + Math.floor((time_passed * 800000) / 10800);
 					$("#service_level").text(""+(service_level * 100) + "%");
           $("#time").text(days+" Days, " + hours + " Hours, " + minutes + " Minutes, " +Math.round(seconds) + " Seconds");
 					$("#hours_lost").text("" + hours_lost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " Hours");
