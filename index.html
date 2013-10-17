@@ -59,7 +59,9 @@
         <p class="lead" style="padding-top:10px;font-weight: bold;">Total time government was last down:</p>
         <p id="down_time" class="lead">16 Days, 0 Hours, 0 Minutes, 0 Seconds</p>
  				<p class="lead" style="font-weight: bold;">Labor time lost during last downtime(assuming 800,000 employees):</p>
-        <p id="hours_lost" class="lead">&nbsp;</p>
+        <p id="hours_lost" class="lead">70,400,000 Hours</p>
+				<p class="lead" style="font-weight: bold;">40 Hour weeks of paid time off for government employees over this period<br/> (doesn't take into account those that worked through it without pay):</p>
+        <p id="time_off" class="lead">1,760,000 Weeks</p>
         <p class="lead" style="font-weight: bold;">Service level low for the last year:</p>
         <p id="service_level" class="lead">95.616438356164%</p>
 
@@ -143,7 +145,7 @@
           var seconds = uptime_length_in_seconds % 60;
 
           $("#up_time").text(days + " Days, " + hours + " Hours, " + minutes + " Minutes, " + Math.round(seconds) + " Seconds");
-					$("#hours_lost").text("" + getHoursLost().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " Hours");
+					// $("#hours_lost").text("" + getHoursLost().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " Hours");
       },1000);
 
     });
