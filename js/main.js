@@ -64,7 +64,7 @@ function workingDaysBetweenDates(startDate, endDate) {
     // Remove end day if span ends on Saturday but starts after Sunday
     if (endDay == 6 && startDay != 0)
         days = days - 1
-        
+
     // Remove holidays from working days
     if ((startDate < new Date("October 14, 2013 00:00:00 EDT")) && (endDate > new Date("October 14, 2013 00:00:00 EDT")))
       days = days - 1
@@ -75,7 +75,7 @@ function workingDaysBetweenDates(startDate, endDate) {
 function getHoursLost() {
   var date_of_shutdown = new Date("October 01, 2013 00:00:00 EDT");
 
-  var date_today = new Date();
+  var date_today = new Date("October 17, 2013 12:00:00 EDT");
   //disregard visitor's timezone and force EDT:
   var date_today_as_utc = date_today.getTime() + (date_today.getTimezoneOffset() * 60000);
   var date_today = new Date(date_today_as_utc + (3600000*-4));
