@@ -73,7 +73,7 @@ function workingDaysBetweenDates(startDate, endDate) {
 }
 
 function getHoursLost() {
-  var date_of_shutdown = new Date("January 20, 2018 00:00:00 EDT");
+  var date_of_shutdown = new Date("January 20, 2018 00:00:00 EST");
 
   var date_today = new Date();
   //disregard visitor's timezone and force EDT:

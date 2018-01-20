@@ -64,10 +64,10 @@
         <p class="lead" style="padding-top:10px;font-weight: bold;">Time since federal government last operated:</p>
         <p id="time" class="lead">&nbsp;</p>
  				<!-- <p class="lead" style="font-weight: bold;">Labor time lost (assuming 800,000 employees):</p>
-        <p id="hours_lost" class="lead">&nbsp;</p>
+        <p id="hours_lost" class="lead">&nbsp;</p> -->
         <p class="lead" style="font-weight: bold;">Service level for last year:</p>
         <p id="service_level" class="lead">&nbsp;</p>
- -->    <p>We will update other stats as relevant for time lost and potential funds wasted</p>
+    <p>We will update other stats as relevant for time lost and potential funds wasted</p>
         <p style="padding-top:20px;"><i>A SysAdmin would be <strike>pissed</strike> fired.</i></p>
 
         <div id="share_this">
@@ -128,8 +128,8 @@
 
       setInterval(function(){
           var today = new Date();
-          var today_as_UTC = today.getTime() + (today.getTimezoneOffset() * 60000); //in UTC
-          today = new Date(today_as_UTC);
+          // var today_as_UTC = today.getTime() + (today.getTimezoneOffset() * 60000); //in UTC
+          // today = new Date(today_as_UTC);
           
           var a_year_ago_today = new Date();
           var a_year_ago_today_as_UTC = a_year_ago_today.getTime() + (a_year_ago_today.getTimezoneOffset() * 60000); //in UTC
