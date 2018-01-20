@@ -65,15 +65,15 @@ function workingDaysBetweenDates(startDate, endDate) {
     if (endDay == 6 && startDay != 0)
         days = days - 1
         
-    // Remove holidays from working days
-    if ((startDate < new Date("October 14, 2013 00:00:00 EDT")) && (endDate > new Date("October 14, 2013 00:00:00 EDT")))
-      days = days - 1
+    // // Remove holidays from working days
+    // if ((startDate < new Date("October 14, 2013 00:00:00 EDT")) && (endDate > new Date("October 14, 2013 00:00:00 EDT")))
+    //   days = days - 1
 
     return days;
 }
 
 function getHoursLost() {
-  var date_of_shutdown = new Date("October 01, 2013 00:00:00 EDT");
+  var date_of_shutdown = new Date("January 20, 2018 00:00:00 EDT");
 
   var date_today = new Date();
   //disregard visitor's timezone and force EDT:

@@ -12,6 +12,13 @@
   <meta property="og:url" content="http://govuptime.com/" />
   <meta property="og:site_name" content="Government Uptime Calculation #govuptime" />
   <meta property="og:description" content="A realtime calculation of the Federal Government's service level." />
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-9001990074379721",
+      enable_page_level_ads: true
+    });
+  </script>
 </head>
 
 <body data-spy="scroll" data-target=".navbar">
@@ -39,10 +46,10 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#downtime">Downtime Tracker</a></li>
-							<li class="divider"></li>
+						<!-- 	<li class="divider"></li>
               <li><a href="#furloughed_employees">Furloughed Employees</a></li>
               <li class="divider"></li>
-              <li><a href="#department_sizes">Department Sizes</a></li>
+              <li><a href="#department_sizes">Department Sizes</a></li> -->
             </ul>
           </div>
         </div>
@@ -56,11 +63,11 @@
         <p class="lead text-error">No.</p>
         <p class="lead" style="padding-top:10px;font-weight: bold;">Time since federal government last operated:</p>
         <p id="time" class="lead">&nbsp;</p>
- 				<p class="lead" style="font-weight: bold;">Labor time lost (assuming 800,000 employees):</p>
+ 				<!-- <p class="lead" style="font-weight: bold;">Labor time lost (assuming 800,000 employees):</p>
         <p id="hours_lost" class="lead">&nbsp;</p>
         <p class="lead" style="font-weight: bold;">Service level for last year:</p>
         <p id="service_level" class="lead">&nbsp;</p>
-
+ -->    <p>We will update other stats as relevant for time lost and potential funds wasted</p>
         <p style="padding-top:20px;"><i>A SysAdmin would be <strike>pissed</strike> fired.</i></p>
 
         <div id="share_this">
@@ -71,7 +78,7 @@
         <div style="width: 190px;margin:0 auto;display:block;">
         <div class="fb-like" data-href="http://facebook.com/govuptime" data-width="The pixel width of the plugin" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="standard" data-action="like" data-show-faces="true" data-send="false"></div></div>
       </div>
-
+<!-- 
 			<div id="furloughed_employees" class="section" style="padding-top:40px"  >
 				<h2 class="document-description">Effect on different departments</h2>
 				<iframe sandbox="allow-same-origin allow-scripts" src="http://vida.io/embed/WgBMc4zDWF7YpqXGR" style="border: 0; width:800; height:600;" width="800" height="600"></iframe>
@@ -80,7 +87,7 @@
       <div id="department_sizes" class="section" style="padding-top:40px">
         <h2>Department sizes</h2>
         <div id="employees_chart"></div>
-      </div>
+      </div> -->
 
     </div>
   </div>
@@ -117,7 +124,7 @@
   <script>
     $(function(){
       //the following date, as well as calculations, will be done in UTC.
-      var shutdown_start = new Date(2013, 9, 1, 4, 0, 0, 0);
+      var shutdown_start = new Date("January 20, 2018 00:00:00 EST");
 
       setInterval(function(){
           var today = new Date();
@@ -152,7 +159,7 @@
 
   <script src="js/underscore.js"></script>
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-  <script src="js/main.min.js"></script>
+  <script src="js/main.js"></script>
 
   <!-- Google Analytics: -->
   <script>
